@@ -1,0 +1,29 @@
+wyszukiwanie dowolnej frazy w wyszukiwarce Qwant;
+
+Scenario: Valid phrase search using https://www.qwant.com/
+Given An url https://www.qwant.com/opened in browser
+When search phrase <<W pustuni i puszczy>> typed into search input box
+And search button clicked
+Then First 3 results contain phrase  <<W pustuni i puszczy>>
+
+ logowanie do portalu edukacyjnego Coders Lab https://lms.coderslab.pl;
+
+Scenario: login in to portal https://lms.coderslab.pl
+Given An Url https://lms.coderslab.pl/ open in browser
+When write account correct email and password into login and password input box
+And login button clicked
+Then We are redirected to  https://lms.coderslab.pl
+
+uruchomienie pierwszej prezentacji z preworku Java na kursie testera automatyzującego
+
+Scenario: Start the First Prework on Website  https://lms.coderslab.pl/material/1025/0-1/f445af4d-30fb-4c33-a7eb-5ddee82e6752
+Given An Url https://lms.coderslab.pl/material/1025/0-1/f445af4d-30fb-4c33-a7eb-5ddee82e6752
+When click on <<Wstęp>> under header named <<Prework>>
+Then The First presentation on https://lms.coderslab.pl/material/1025/0-1/f445af4d-30fb-4c33-a7eb-5ddee82e6752 will open
+
+Zalogowanie się jako użytkownik na stronie
+Scenario: Logging on my username account on Website https://mystore-testlab.coderslab.pl/index.php
+Given An Url https://mystore-testlab.coderslab.pl/index.php/ open in browser
+When logging to account I chose create  new address
+And adding new address
+Then Check there is all correct
