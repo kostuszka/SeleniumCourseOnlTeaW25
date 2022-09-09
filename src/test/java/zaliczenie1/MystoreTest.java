@@ -46,6 +46,9 @@ public class MystoreTest {
         MystoreMyCreateNewAddresses myCreateNewAddresses= new MystoreMyCreateNewAddresses(driver);
         Assert.assertTrue(myCreateNewAddresses.isAddressCreationSuccessConfirmed());
 
+        MyDeleteNewAddress myDeleteNewAddress=new MyDeleteNewAddress(driver);
+        myDeleteNewAddress.deletingAddress();
+
         DeleteNewAddress  deleteNewAddress = new DeleteNewAddress(driver);
         Assert.assertTrue(deleteNewAddress.isAddressDeleteSuccessConfirmed());
         }
