@@ -10,9 +10,11 @@ Feature: user add new address on account
     Scenario Outline:
     Add a new address  by user  to account on Website https://mystore-testlab.coderslab.pl/index.php
       Given An Url https://mystore-testlab.coderslab.pl/index.php/ open in browser
-      When logging to user account
-      And  chose create  new address
-      And  adding new address
+      When log in as a user
+      And  enter Button Add New Address
+      And  fill in form new address
+      And  check that address is correct
+      Then quit the browse
       Examples:
       |fill in form|result  |
       |alias       |Mizerota|
@@ -23,5 +25,5 @@ Feature: user add new address on account
       |phone       |327054760|
 
       
-      And  check there is all correct
-      Then quit the browse
+
+

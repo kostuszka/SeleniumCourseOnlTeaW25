@@ -31,8 +31,6 @@ public class CreateNewAddress {
     }
 
 
-    public void registerAddress(String accontData1) {
-    }
 }
 
 

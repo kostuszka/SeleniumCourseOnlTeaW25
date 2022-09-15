@@ -30,7 +30,7 @@ public class QwantSearchPageObjectTest {
         this.driver.get("https://www.qwant.com/");
     }
 
-    //@Test
+    @Test
     public void qwantSearchTest() {
         QwantMainPage qwantMainPage = new QwantMainPage(this.driver);
         // given
