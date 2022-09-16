@@ -8,12 +8,12 @@ public class DeleteNewAddress {
     private WebDriver driver;
     public DeleteNewAddress(WebDriver driver) {this.driver=driver;}
 
-    public boolean isAddressDeleteSuccessConfirmed()
+    public boolean isAddressDeleteSuccessConfirmed(String text)
     {
         WebElement confirmationPanel= this.driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/aside/div/article/ul/li"));
         String panelText=confirmationPanel.getText();
         System.out.println(panelText);
-        return panelText.equals("Address successfully deleted!");
+        return panelText.equals(text);
     }
         public void enterAddresses(){
         WebElement addressesButton=this.driver.findElement(By.id("addresses-link"));

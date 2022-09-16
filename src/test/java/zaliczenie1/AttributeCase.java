@@ -3,17 +3,17 @@ package zaliczenie1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class MystoreAttribute {
+public class AttributeCase {
     private WebDriver driver;
 
-    public MystoreAttribute(WebDriver driver) {
+    public AttributeCase(WebDriver driver) {
         this.driver = driver;
     }
 
-    public boolean isAliasFieldsSuccessConfirmed() {
+    public boolean isAliasFieldsSuccessConfirmed(String alias) {
         String aliasField = driver.findElement(By.name("alias")).getAttribute("value");
         System.out.println(aliasField);
-        return aliasField.equals("Mizerota");
+        return aliasField.equals(alias);
     }
 
     public boolean isAddressFieldSuccessConfirmed() {

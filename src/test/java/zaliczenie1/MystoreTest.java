@@ -1,21 +1,15 @@
 package zaliczenie1;
 
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import pageobject.QwantSearchResultsPage;
 
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.Duration;
-import java.time.LocalDateTime;
-import java.util.List;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
@@ -32,15 +26,17 @@ public class MystoreTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(16));
         driver.get("https://mystore-testlab.coderslab.pl/index.php?controller=authentication&back=my-account");
         driver.manage().window().maximize();
+        //LoginPage loginPage = new LoginPage(driver);
+        //loginPage.fillInForm();
+        //MystoreMainPage MystoreMainPage = new MystoreMainPage(driver);
+        //MystoreMainPage.clickSignIn();
+        UserLoger userLoger = new UserLoger(driver);
+        userLoger.loginAs("nzxbskzfbgezloekqy@kvhrw.com", "Nasza123");
     }
 
     @Test
-    public void myAddingAddressTest() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.fillInForm();
+    public void addingAddressTest() {
 
-        MystoreMainPage MystoreMainPage = new MystoreMainPage(driver);
-        MystoreMainPage.clickSignIn();
 
         AddAdddress addAdddress = new AddAdddress(driver);
         addAdddress.addingAddress();
@@ -65,8 +61,8 @@ public class MystoreTest {
         UpdateAddress updateButton = new UpdateAddress(driver);
         updateButton.clickUpdate();
 
-        MystoreAttribute mystoreAttribute = new MystoreAttribute(driver);
-        Assert.assertTrue(mystoreAttribute.isAliasFieldsSuccessConfirmed());
+        AttributeCase mystoreAttribute = new AttributeCase(driver);
+        Assert.assertTrue(mystoreAttribute.isAliasFieldsSuccessConfirmed("Mizerota"));
         Assert.assertTrue(mystoreAttribute.isAddressFieldSuccessConfirmed());
         Assert.assertTrue(mystoreAttribute.isCityFieldSuccessConfirmed());
         Assert.assertTrue(mystoreAttribute.isZipFieldSuccessConfirmed());
@@ -81,28 +77,17 @@ public class MystoreTest {
     @Test
     public void deletingAddressTest() {
 
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.fillInForm();
-
-        MystoreMainPage MystoreMainPage = new MystoreMainPage(driver);
-        MystoreMainPage.clickSignIn();
-
 
         DeleteNewAddress deleteNewAddress = new DeleteNewAddress(driver);
         deleteNewAddress.enterAddresses();
         MyDeleteNewAddress myDeleteNewAddress = new MyDeleteNewAddress(driver);
         myDeleteNewAddress.deletingAddress();
-        Assert.assertTrue(deleteNewAddress.isAddressDeleteSuccessConfirmed());
+        Assert.assertTrue(deleteNewAddress.isAddressDeleteSuccessConfirmed("Address successfully deleted!"));
     }
 
     @Test
     public void buyingTheThingsTest() throws IOException {
 
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.fillInForm();
-
-        MystoreMainPage MystoreMainPage = new MystoreMainPage(driver);
-        MystoreMainPage.clickSignIn();
 
         AddAdddress addAdddress = new AddAdddress(driver);
         addAdddress.addingAddress();
@@ -134,18 +119,19 @@ public class MystoreTest {
         SaveScreenshot saveScreenshot = new SaveScreenshot(driver);
         saveScreenshot.savingScreenshot();
 
-        driver.quit();
+
     }
-       @AfterAll
-       public void AfterAll (){
-        driver.quit();
-       }
-       }
+
+    //@AfterEach
+    //public void AfterEach() {
+       // driver.quit();
 
 
 
-    //@Test
-    //public void testLoginWithProperCredentials() {
-       //UserLoger userLoger = new UserLoger(driver);
-       // userLoger.loginAs("nzxbskzfbgezloekqy@kvhrw.com", "Nasza123");
-       // Assert.assertEquals("Automated Tester", UserLoger.getLoggedUsername());
+    @Test
+    public void testLoginWithProperCredentials() {
+        //UserLoger userLoger = new UserLoger(driver);
+        //userLoger.loginAs("nzxbskzfbgezloekqy@kvhrw.com", "Nasza123");
+        Assert.assertEquals("Jan Nowak", UserLoger.getLoggedUsername());
+    }
+}

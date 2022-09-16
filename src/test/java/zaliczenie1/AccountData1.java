@@ -1,6 +1,8 @@
 package zaliczenie1;
 
 
+import org.openqa.selenium.WebDriver;
+
 public class AccountData1 {
     private String alias;
     private String address;
@@ -9,8 +11,15 @@ public class AccountData1 {
     private String country;
     private String phone;
 
+    public AccountData1(WebDriver driver) {
+    }
 
-        public String getAlias() {return alias;}
+    public AccountData1() {
+
+    }
+
+
+    public String getAlias() {return alias;}
 
 
         public AccountData1 setAlias(String alias) {

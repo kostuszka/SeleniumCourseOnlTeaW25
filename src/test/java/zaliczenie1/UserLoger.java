@@ -16,19 +16,20 @@ public class UserLoger {
         WebElement loginInput = driver.findElement(By.name("email"));
         loginInput.click();
         loginInput.clear();
-        loginInput.sendKeys("nzxbskzfbgezloekqy@kvhrw.com");
+        loginInput.sendKeys (email);
 
-        driver.findElement(By.name("password"));
-        loginInput.click();
-        loginInput.clear();
-        loginInput.sendKeys("Nasza123");
+        WebElement passwordInput =driver.findElement(By.name("password"));
+        passwordInput.click();
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
 
         WebElement signInButton = driver.findElement(By.id("submit-login"));
         signInButton.click();
     }
 
     public static String getLoggedUsername() {
-        return null;
+       WebElement userName= driver.findElement(By.xpath("/html/body/main/header/nav/div/div/div[1]/div[2]/div[2]/div/a[2]/span"));
+       return userName.getText();
     }
 }
 
